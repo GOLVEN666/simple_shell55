@@ -46,7 +46,15 @@ This command compiles all the .c files in the repository and generates an execut
 
 # Usage
 After compiling the shell, you can run it by executing the hsh executable:
+```
+```
 $ ./hsh
+```
+README.md: this.
+
+
+
+
 
 ### Contact Info:
 
