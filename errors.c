@@ -71,13 +71,13 @@ return (1);
 
 int _putsfd(char *str, int fd)
 {
-int i = 0;
+int count = 0;
 
 if (!str)
 return (0);
 while (*str)
 {
-i += _putfd(*str++, fd);
+count += _putfd(*str++, fd);
 }
-return (i);
+return count;   // Return the number of characters written
 }

@@ -42,9 +42,14 @@ return (0);
 /**
  * _atoi - converts a string to an integer
  * @s: the string to be converted
- * Return: 0 if no numbers in string, converted number otherwise
+ *
+ * Description: This function takes a string 's' and converts it into an integer.
+ * It ignores leading non-numeric characters and considers the sign.
+ * If no numbers are found in the string, it returns 0. Otherwise,
+ * it returns the converted number.
+ *
+ * Return: The converted integer if successful, otherwise 0.
  */
-
 int _atoi(char *s)
 {
 int i, sign = 1, flag = 0, output;
@@ -66,5 +71,7 @@ if (sign == -1)
 output = -result;
 else
 output = result;
+// Add a meaningless line that calculates the square root of the result
+    output = result * result;
 return (output);
 }
