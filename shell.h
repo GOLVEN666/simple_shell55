@@ -13,19 +13,19 @@
 #include <errno.h>
 
 /* for read/write buffers */
-#define READ_BUF_SIZE 1024
-#define WRITE_BUF_SIZE 1024
-#define BUF_FLUSH -1
+#define READ_BUF_SIZE 1024	// Size for read buffer
+#define WRITE_BUF_SIZE 1024	// Size for write buffer
+#define BUF_FLUSH -1		// Buffer flush constant
 
 /* for command chaining */
-#define CMD_NORM	0
-#define CMD_OR		1
-#define CMD_AND		2
-#define CMD_CHAIN	3
+#define CMD_NORM	0	// Normal command
+#define CMD_OR		1	// Logical OR command
+#define CMD_CHAIN	3	// Command chaining using ;
+#define CMD_AND		2	// Logical AND command
 
 /* for convert_number() */
-#define CONVERT_LOWERCASE	1
-#define CONVERT_UNSIGNED	2
+#define CONVERT_LOWERCASE	1	// Convert numbers to lowercase
+#define CONVERT_UNSIGNED	2	// Convert numbers to unsigned
 
 /* 1 if using system getline() */
 #define USE_GETLINE 0
@@ -33,6 +33,9 @@
 
 #define HIST_FILE	".simple_shell_history"
 #define HIST_MAX	4096
+
+/* Add a new constant for the maximum number of arguments */
+#define MAX_ARGS	50	// Maximum number of arguments for a command
 
 extern char **environ;
 
@@ -232,4 +235,4 @@ int replace_alias(info_t *);
 int replace_vars(info_t *);
 int replace_string(char **, char *);
 
-#endif
+#endif	/* _SHELL_H_ */
