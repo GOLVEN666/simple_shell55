@@ -46,8 +46,8 @@ char *_strdup(const char *str)
 }
 
 /**
- * _puts - prints an input string
- * @str: the string to be printed
+ *_puts - prints an input string
+ *@str: the string to be printed
  *
  * Return: Nothing
  */
@@ -85,4 +85,3 @@ int _putchar(char c)
 		buf[i++] = c;
 	return (1);
 }
-
