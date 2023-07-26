@@ -53,6 +53,7 @@ void print_error(info_t *info, char *estr)
  *
  * Return: number of characters printed
  */
+
 int print_d(int input, int fd)
 {
 	int (*__putchar)(char) = _putchar;
@@ -93,6 +94,7 @@ int print_d(int input, int fd)
  *
  * Return: string
  */
+
 char *convert_number(long int num, int base, int flags)
 {
 	static char *array;
@@ -127,6 +129,7 @@ char *convert_number(long int num, int base, int flags)
  *
  * Return: Always 0;
  */
+
 void remove_comments(char *buf)
 {
 	int i;
