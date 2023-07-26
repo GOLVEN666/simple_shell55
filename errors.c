@@ -80,5 +80,5 @@ int _putsfd(char *str, int fd)
   {
     count += _putfd(*str++, fd);
 }
-  return count;   // Return the number of characters written
+  return count;
 }
