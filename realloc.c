@@ -37,26 +37,24 @@ void ffree(char **pp)
  * @old_size: byte size of previous block
  * @new_size: byte size of new block
  *
- * Return: pointer to da ol'block nameen.
+ * Return: pointer to the reallocated block, or NULL on failure.
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	char *p;
-
 	if (!ptr)
-		return (malloc(new_size));
-	if (!new_size)
-		return (free(ptr), NULL);
-	if (new_size == old_size)
-		return (ptr);
+	{
+	// If ptr is NULL, equivalent to malloc(new_size)
+	return malloc(new_size);
+	}
 
-	p = malloc(new_size);
-	if (!p)
-		return (NULL);
-
-	old_size = old_size < new_size ? old_size : new_size;
-	while (old_size--)
-		p[old_size] = ((char *)ptr)[old_size];
+	if (new_size == 0)
+	{
+	// If new_size is 0, equivalent to free(ptr) and return NULL
 	free(ptr);
-	return (p);
+	return NULL;
+	}
+	// Use realloc to resize the memory block
+	void *new_ptr = realloc(ptr, new_size);
+
+	return new_ptr;
 }
