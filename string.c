@@ -62,20 +62,14 @@ char *starts_with(const char *haystack, const char *needle)
  *
  * Return: pointer to destination buffer
  */
-char *_strcat(char *dest, const char *src)
+char *_strcat(char *dest, char *src)
 {
 	char *ret = dest;
 
-	// Move to the end of the destination buffer
 	while (*dest)
 		dest++;
-
-	// Copy characters from the source buffer to the destination buffer
 	while (*src)
 		*dest++ = *src++;
-
-	// Add the null-terminating character to the end of the destination buffer
-	*dest = '\0';
-
+	*dest = *src;
 	return (ret);
 }

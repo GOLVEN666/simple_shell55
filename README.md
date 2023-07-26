@@ -1,61 +1,95 @@
-# Simple Shell Project Repository
+<h1 align="center">
+  0x16. C - Simple Shell
+</h1>
 
-This repository contains the files for ALX **simple_shell** project, a basic UNIX command line interpreter. The shell supports common commands and programs typically found in the `/bin/` directory.
+<p align="center">
+   📄 🚀
+</p>
 
-## Pre-requisites
+<p align="center">
+  <strong>
+   Description
+  </strong>
+</p>
 
-To compile the shell, you will need the following authorized functions and macros:
+<p align="center">
+This project is an implementation of the shell created as a Milestone Project for the C code at ALX Africa Software Engineering. </br>
+The gates of shell is a project in the first trimester, that helps student to understand the advanced
+concepts behind the shell program include process, system call, bit manipulation, file managment, error handling ... </br>
+Shell is a simple UNIX command interpreter that replicates functionalities of the simple shell (sh). </br>
+This program was written entirely in C Language.
+</p>
 
-- `access` (man 2 access)
-- `chdir` (man 2 chdir)
-- `close` (man 2 close)
-- `closedir` (man 3 closedir)
-- `execve` (man 2 execve)
-- `exit` (man 3 exit)
-- `_exit` (man 2 _exit)
-- `fflush` (man 3 fflush)
-- `fork` (man 2 fork)
-- `free` (man 3 free)
-- `getcwd` (man 3 getcwd)
-- `getline` (man 3 getline)
-- `isatty` (man 3 isatty)
-- `kill` (man 2 kill)
-- `malloc` (man 3 malloc)
-- `open` (man 2 open)
-- `opendir` (man 3 opendir)
-- `perror` (man 3 perror)
-- `read` (man 2 read)
-- `readdir` (man 3 readdir)
-- `signal` (man 2 signal)
-- `stat` (`__xstat`) (man 2 stat)
-- `lstat` (`__lxstat`) (man 2 lstat)
-- `fstat` (`__fxstat`) (man 2 fstat)
-- `strtok` (man 3 strtok)
-- `wait` (man 2 wait)
-- `waitpid` (man 2 waitpid)
-- `wait3` (man 2 wait3)
-- `wait4` (man 2 wait4)
-- `write` (man 2 write)
+## COPYRIGHT
+Copyright (C) 2022 by [**Reny Kipkoech**](https://github.com/Tr-reny) and [**Stellah Mbao**](https://github.com/StellahMbao) </br>
+All rights reserved
 
-You can compile the shell using the following GCC command:
+ ## Description :
+This is a shell written in [C](https://en.wikipedia.org/wiki/C_(programming_language)).
+It is based on [the Thompson Shell](https://en.wikipedia.org/wiki/Thompson_shell).
 
-```bash
-gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
+## Environment :
 
-This command compiles all the .c files in the repository and generates an executable called hsh.
+Our shell was built and tested on  Ubuntu 14.04 LTS.
 
-# Usage
-After compiling the shell, you can run it by executing the hsh executable:
+## Features
+* Display a prompt and wait for the user to type a command. A command line always ends with a new line.
+* If an executable cannot be found, print an error message and display the prompt again.
+* Handle errors.
+* Hndling the “end of file” condition (Ctrl+D)
+* Hanling the command line with arguments
+* Handle the PATH
+* Support the exit features and the exit status
+* Handle the Ctrl-C to not terminate the shell
+* Handling the command seperator `;`
+* Handling `&&` and `||` logical operators
+* Handle variable replacements `$?` and `$$`
+* Handle the comments `#`
+* Support the history feature
+* Support the file input
+
+## Builtins
+Our shell has support for the following built-in commands:
+
+| Command             | Definition                                                                                |
+| ------------------- | ----------------------------------------------------------------------------------------- |
+| exit [n]            | Exit the shell, with an optional exit status, n.                                          |
+| env                 | Print the environment.                                                                    |
+| setenv [var][value] | Set an environment variable and value. If the variable exists, the value will be updated. |
+| alias[name[='value]]| Reads aliases name                                                                        |
+| unsetenv [var]      | Remove an environment variable.                                                           |
+| cd [dir]            | Change the directory.                                                                     |
+| help [built-in]     | Read documentation for a built-in.                                                        |
+
+
+ ## Installation : Getting HSH
+ 
+Clone the below repository and compile the files into an executable using the GCC compiler.
 ```
+https://github.com/StellahMbao/simple_shell.git
 ```
-$ ./hsh
+
+### Basic usage :bulb:
+- First, Fork this Repository [Learn how to fork repo](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo).
+- Then Clone [Learn how to clone ](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository).
+- Create an executable by running the following command:
+- `gcc -Wall -Werror -Wextra -pedantic *.c -o hsh`
+- From there, type in the following command and press your enter button.
+- `./hsh`
+- Final step: ENJOY!
+
+
+## Example :computer:
 ```
-README.md: this.
+ls -la
+```
+![114757753-e50c2180-9d64-11eb-95ea-fb9bba776c8c](https://user-images.githubusercontent.com/57016982/186711943-65abad4d-eedf-4d65-947d-3710e189bdee.png)
 
+## Contributors :
+* [**Reny Kipkoech**](https://github.com/Tr-reny)
+* [**Stellah Mbao**](https://github.com/StellahMbao)
 
-
-
-
-### Contact Info:
-
-Git: [GOLVEN666](https://github.com/GOLVEN666)
+## Acknowledgments :
+- The creators of the C language.
+- Our software engineer-in-residence.
+- Betty Holberton | Alx-Africa .
