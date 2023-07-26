@@ -32,29 +32,42 @@ void ffree(char **pp)
 }
 
 /**
- * _realloc - reallocates a block of memory
- * @ptr: pointer to previous malloc'ated block
- * @old_size: byte size of previous block
- * @new_size: byte size of new block
+ * _realloc - Reallocates a block of memory.
+ * @ptr: Pointer to the previously allocated block.
+ * @old_size: Byte size of the previous block.
+ * @new_size: Byte size of the new block.
  *
- * Return: pointer to the reallocated block, or NULL on failure.
+ * Return: Pointer to the reallocated block, or NULL on failure.
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
+    char *p;
+
 	if (!ptr)
+		return (malloc(new_size));
+	if (!new_size)
 	{
-	// If ptr is NULL, equivalent to malloc(new_size)
-	return malloc(new_size);
-	}
-
-	if (new_size == 0)
-	{
-	// If new_size is 0, equivalent to free(ptr) and return NULL
 	free(ptr);
-	return NULL;
-	}
-	// Use realloc to resize the memory block
-	void *new_ptr = realloc(ptr, new_size);
+		return NULL;
+}
 
-	return new_ptr;
+
+	if (new_size == old_size)
+		return (ptr);
+
+	// Allocate memory for the new block
+	p = malloc(new_size);
+	if (!p)
+		return (NULL);
+
+	// Determine the size to be copied (minimum of old_size and new_size)
+	unsigned int size_to_copy = old_size < new_size ? old_size : new_size;
+
+	// Copy the data from the old block to the new block
+	while (size_to_copy--)
+		p[size_to_copy] = ((char *)ptr)[size_to_copy];
+
+	// Free the old block
+	free(ptr);
+	return (p);
 }
