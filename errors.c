@@ -1,22 +1,16 @@
 #include "shell.h"
 
 /**
- *_eputs - prints an input string
+ * _eputs - prints an input string
  * @str: the string to be printed
  *
  * Return: Nothing
  */
 void _eputs(char *str)
 {
-	int i = 0;
-
 	if (!str)
 		return;
-	while (str[i] != '\0')
-	{
-		_eputchar(str[i]);
-		i++;
-	}
+	_eputs_fd(str, 2);
 }
 
 /**
@@ -28,8 +22,8 @@ void _eputs(char *str)
  */
 int _eputchar(char c)
 {
-	static int i;
 	static char buf[WRITE_BUF_SIZE];
+	static int i = 0;
 
 	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
 	{
@@ -51,8 +45,8 @@ int _eputchar(char c)
  */
 int _putfd(char c, int fd)
 {
-	static int i;
 	static char buf[WRITE_BUF_SIZE];
+	static int i = 0;
 
 	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
 	{
@@ -68,17 +62,18 @@ int _putfd(char c, int fd)
  * _putsfd - prints an input string
  * @str: the string to be printed
  * @fd: the filedescriptor to write to
+ *
  * Return: the number of chars put
  */
 int _putsfd(char *str, int fd)
-{ 
-  int count = 0;
+{
+	int count = 0;
 
-  if (!str)
-    return (0);
-  while (*str)
-  {
-    count += _putfd(*str++, fd);
-}
-  return count;
+	if (!str)
+		return (0);
+	while (*str)
+	{
+		count += _putfd(*str++, fd);
+	}
+	return (count);
 }

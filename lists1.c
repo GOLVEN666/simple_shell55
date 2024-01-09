@@ -8,14 +8,12 @@
  */
 size_t list_len(const list_t *h)
 {
-	size_t i = 0;
+	size_t count = 0;
 
-	while (h)
-	{
-		h = h->next;
-		i++;
-	}
-	return (i);
+	for (; h; h = h->next)
+		count++;
+
+	return count;
 }
 
 /**
@@ -26,34 +24,35 @@ size_t list_len(const list_t *h)
  */
 char **list_to_strings(list_t *head)
 {
-	list_t *node = head;
-	size_t i = list_len(head), j;
-	char **strs;
-	char *str;
+	size_t len = list_len(head);
+	char **strs = NULL;
+	char **temp = NULL;
 
-	if (!head || !i)
-		return (NULL);
-	strs = malloc(sizeof(char *) * (i + 1));
+	if (!head || !len)
+		return NULL;
+
+	strs = malloc(sizeof(char *) * (len + 1));
 	if (!strs)
-		return (NULL);
-	for (i = 0; node; node = node->next, i++)
+		return NULL;
+
+	temp = strs;
+	while (head)
 	{
-		str = malloc(_strlen(node->str) + 1);
-		if (!str)
+		*temp = _strcpy(malloc(_strlen(head->str) + 1), head->str);
+		if (!*temp)
 		{
-			for (j = 0; j < i; j++)
-				free(strs[j]);
+			while (temp-- != strs)
+				free(*temp);
 			free(strs);
-			return (NULL);
+			return NULL;
 		}
-
-		str = _strcpy(str, node->str);
-		strs[i] = str;
+		temp++;
+		head = head->next;
 	}
-	strs[i] = NULL;
-	return (strs);
-}
+	*temp = NULL;
 
+	return strs;
+}
 
 /**
  * print_list - prints all elements of a list_t linked list
@@ -63,19 +62,18 @@ char **list_to_strings(list_t *head)
  */
 size_t print_list(const list_t *h)
 {
-	size_t i = 0;
+	size_t count = 0;
 
-	while (h)
+	for (; h; h = h->next, count++)
 	{
 		_puts(convert_number(h->num, 10, 0));
 		_putchar(':');
 		_putchar(' ');
 		_puts(h->str ? h->str : "(nil)");
 		_puts("\n");
-		h = h->next;
-		i++;
 	}
-	return (i);
+
+	return count;
 }
 
 /**
@@ -88,16 +86,14 @@ size_t print_list(const list_t *h)
  */
 list_t *node_starts_with(list_t *node, char *prefix, char c)
 {
-	char *p = NULL;
-
-	while (node)
+	for (; node; node = node->next)
 	{
-		p = starts_with(node->str, prefix);
+		char *p = starts_with(node->str, prefix);
 		if (p && ((c == -1) || (*p == c)))
-			return (node);
-		node = node->next;
+			return node;
 	}
-	return (NULL);
+
+	return NULL;
 }
 
 /**
@@ -109,14 +105,13 @@ list_t *node_starts_with(list_t *node, char *prefix, char c)
  */
 ssize_t get_node_index(list_t *head, list_t *node)
 {
-	size_t i = 0;
+	size_t index = 0;
 
-	while (head)
+	for (; head; head = head->next, index++)
 	{
 		if (head == node)
-			return (i);
-		head = head->next;
-		i++;
+			return index;
 	}
-	return (-1);
+
+	return -1;
 }
